@@ -1,0 +1,15 @@
+name: Deploy
+description: Deploy stuff to Vercel. Assumes everything is built already.
+inputs:
+  vercel-token:
+    description: "The Vercel token to use for authentication."
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Deploy - Online Refund
+      uses: ./.github/actions/deploy-vercel
+      with:
+        vercel-org-id: team_VFBeqOYJtQVYntZX9L91g3eZ
+        vercel-project-id: prj_FVgCW3xySHWxe80l6ql27lYZ8X6r
+        vercel-token: ${{ inputs.vercel-token }}

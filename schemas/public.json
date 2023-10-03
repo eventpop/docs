@@ -1,0 +1,297 @@
+{
+  "info": {
+    "title": "API title",
+    "version": "0.0.1"
+  },
+  "swagger": "2.0",
+  "produces": [
+    "application/xml",
+    "application/json",
+    "application/octet-stream",
+    "text/plain"
+  ],
+  "host": "localhost:3000",
+  "basePath": "/api/public",
+  "tags": [
+    {
+      "name": "organizers",
+      "description": "Operations about organizers"
+    },
+    {
+      "name": "info",
+      "description": "Operations about infos"
+    },
+    {
+      "name": "me",
+      "description": "Operations about mes"
+    },
+    {
+      "name": "tickets",
+      "description": "Operations about tickets"
+    }
+  ],
+  "paths": {
+    "/organizers/{organizer_id}/tickets": {
+      "get": {
+        "description": "Get tickets",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "description": "OAuth Token",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "order_by",
+            "type": "string",
+            "default": "id",
+            "enum": ["id", "created_at", "updated_at", "used_at"],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "type": "string",
+            "default": "asc",
+            "enum": ["asc", "desc"],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "organizer_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get tickets"
+          }
+        },
+        "tags": ["organizers"],
+        "operationId": "getOrganizersOrganizerIdTickets"
+      }
+    },
+    "/organizers/{organizer_id}/orders": {
+      "get": {
+        "description": "Get orders",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "description": "OAuth Token",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "order_by",
+            "type": "string",
+            "default": "id",
+            "enum": ["id", "created_at", "paid_at", "updated_at"],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "type": "string",
+            "default": "asc",
+            "enum": ["asc", "desc"],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "organizer_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get orders"
+          }
+        },
+        "tags": ["organizers"],
+        "operationId": "getOrganizersOrganizerIdOrders"
+      }
+    },
+    "/organizers/{organizer_id}/events": {
+      "get": {
+        "description": "Get events in an organizer",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "access_token",
+            "description": "OAuth Token",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "default": 1,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "type": "integer",
+            "format": "int32",
+            "default": 10,
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "order_by",
+            "type": "string",
+            "default": "id",
+            "enum": ["id", "created_at", "updated_at", "start_at", "end_at"],
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "type": "string",
+            "default": "asc",
+            "enum": ["asc", "desc"],
+            "required": false
+          },
+          {
+            "in": "path",
+            "name": "organizer_id",
+            "type": "integer",
+            "format": "int32",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get events in an organizer"
+          }
+        },
+        "tags": ["organizers"],
+        "operationId": "getOrganizersOrganizerIdEvents"
+      }
+    },
+    "/info": {
+      "get": {
+        "description": "API Info",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "API Info"
+          }
+        },
+        "tags": ["info"],
+        "operationId": "getInfo"
+      }
+    },
+    "/me": {
+      "get": {
+        "summary": "Me",
+        "description": "A) Using `Authorization` header : Prefix your access token with `Bearer `.  B) Using `access_token` body param : Use token as-is",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer token",
+            "type": "string",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "access_token",
+            "description": "OAuth Token",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Me"
+          }
+        },
+        "tags": ["me"],
+        "operationId": "getMe"
+      }
+    },
+    "/tickets/search": {
+      "get": {
+        "description": "Search ticket with event ID and ticket reference code",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "event_id",
+            "description": "Event ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "reference_code",
+            "description": "Ticket reference code",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "access_token",
+            "description": "OAuth Token",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search ticket with event ID and ticket reference code"
+          }
+        },
+        "tags": ["tickets"],
+        "operationId": "getTicketsSearch"
+      }
+    }
+  }
+}

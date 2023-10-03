@@ -15,7 +15,7 @@ const { openAPISidebarGroups, starlightOpenAPI } = await generateAPI([
 export default defineConfig({
   integrations: [
     starlight({
-      title: "Eventpop Public API Documentation",
+      title: "Eventpop API Documentation",
       social: {
         github: "https://github.com/eventpop",
       },

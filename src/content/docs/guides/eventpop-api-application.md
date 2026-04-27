@@ -1,12 +1,24 @@
 ---
 title: Eventpop API Application
-description: ""
+description: "Request API credentials for your integration"
 sidebar:
   order: 2
 ---
 
-At the moment, creating API Application will be by request only. Please provide these information to our developer to get your API Application setup :
+An API Application provides OAuth 2.0 credentials (Client ID & Secret) that authenticate your integration with Eventpop.
 
-- Your Eventpop organizer name or ID
-- Your designated `Callback URL` when user is logged in and authorized with your app. eg. `https://your-awesome-app.com/oauth/callback`
-Then you'll get `Client ID` and `Client Secret` from us, they'll be used for user / app authentication, keep them secret
+## Requesting an API Application
+
+Creating API Applications is currently by request only. Contact our developer team with the following information:
+
+- **Organizer name or ID** - The organizer account that will own this application
+- **Use case** - Brief description of what you're building (e.g., "ticket validation app", "event widget")
+- **Callback URL** - The URL where users will be redirected after authorization, e.g. `https://your-awesome-app.com/oauth/callback`
+
+## Your Credentials
+
+Once approved, you'll receive:
+- **Client ID** - Public identifier for your application
+- **Client Secret** - Keep this secure! Never expose it in client-side code or commit it to version control
+
+These credentials are used for [authentication](./authentication) via OAuth 2.0.

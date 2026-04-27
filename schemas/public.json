@@ -212,16 +212,18 @@
           {
             "in": "query",
             "name": "email",
-            "description": "Filter by attendee email (exact match)",
+            "description": "Filter by attendee email (contains, case-insensitive). Sensitive: passing PII in URLs may be captured by access logs, proxies, and browser history. Prefer transmitting over TLS only, avoid logging request URLs, and rotate logs that may contain this value.",
             "type": "string",
-            "required": false
+            "required": false,
+            "x-sensitive": true
           },
           {
             "in": "query",
             "name": "phone",
-            "description": "Filter by attendee phone number (exact match)",
+            "description": "Filter by attendee phone number (contains). Sensitive: passing PII in URLs may be captured by access logs, proxies, and browser history. Prefer transmitting over TLS only, avoid logging request URLs, and rotate logs that may contain this value.",
             "type": "string",
-            "required": false
+            "required": false,
+            "x-sensitive": true
           },
           {
             "in": "query",
@@ -310,6 +312,9 @@
             }
           },
           "401": { "description": "Unauthorized" },
+          "403": {
+            "description": "Forbidden - Organizer scope required or application not owned by organizer"
+          },
           "404": { "description": "Event not found" }
         },
         "tags": ["Organizer Resources"],
